@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {GlobalContext} from "../stateProvider";
 import styled from "styled-components";
 
 
@@ -6,13 +7,13 @@ export default class Item extends Component {
 
   // constructor(props) {
   //   super(props);
-  //   this.eventHandler = this.eventHandler.bind(this);
-  //   this.state = {
-  //     countItem: 0,
-  //     addItem: [],
-  //     itemName: this.props.nameTitle,
-  //
-  //   };
+  //   //this.eventHandler = this.eventHandler.bind(this);
+  //   // this.state = {
+  //   //   countItem: 0,
+  //   //   addItem: [],
+  //   //   itemName: this.props.nameTitle,
+  //   //
+  //   // };
   // }
   //
   // eventHandler(e) {
@@ -27,12 +28,16 @@ export default class Item extends Component {
 
   render() {
     return (
+      <GlobalContext.Consumer>
+      {context => (
       <Itemcard className="item-card">
         <Imageitem src={this.props.itemImage} alt="itemOne" />
         <Nametitle className="name-title">{this.props.nameTitle}</Nametitle>
         <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
-        <Button onClick={this.eventHandler}>add to cart +</Button>
+        <Button onClick={() => context.changeStateFn.addingItem(context.globalState.countItem + 1)}>add to cart +</Button>
       </Itemcard>
+      )}
+      </GlobalContext.Consumer>
     );
   }
 }
