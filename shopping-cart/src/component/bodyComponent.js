@@ -19,43 +19,43 @@ export default class BodyCompo extends Component {
     this.state = {
       shoppingItems: [{
         imageItem: Itemimage1,
-        nameTitle: "bag 01",
-        itemPrice: "$123"
+        nameTitle: "Bag 01",
+        itemPrice: "$297"
       },
       {
         imageItem: Itemimage2,
-        nameTitle: "bag 02",
-        itemPrice: "$123"
+        nameTitle: "Bag 02",
+        itemPrice: "$623"
       },
       {
         imageItem: Itemimage3,
         nameTitle: "Laptop 01",
-        itemPrice: "$123"
+        itemPrice: "$823"
       },
       {
         imageItem: Itemimage4,
         nameTitle: "Laptop 02",
-        itemPrice: "$123"
+        itemPrice: "$423"
       },
       {
         imageItem: Itemimage5,
         nameTitle: "Mobile 01",
-        itemPrice: "$123"
+        itemPrice: "$217"
       },
       {
         imageItem: Itemimage6,
         nameTitle: "Mobile 02",
-        itemPrice: "$123"
+        itemPrice: "$323"
       },
       {
         imageItem: Itemimage7,
-        nameTitle: "watch 01",
-        itemPrice: "$123"
+        nameTitle: "Watch 01",
+        itemPrice: "$523"
       },
       {
         imageItem: Itemimage8,
-        nameTitle: "watch 02",
-        itemPrice: "$123"
+        nameTitle: "Watch 02",
+        itemPrice: "$293"
       }
     ]
     };

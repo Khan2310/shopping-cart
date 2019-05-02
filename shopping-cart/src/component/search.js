@@ -5,7 +5,7 @@ export default class Search extends Component {
   render() {
     return (
       <Searchcontainer className="search-container">
-        <Input className="search-box" placeholder="search item..."></Input>
+        <Input className="search-box" placeholder="Search Item..."></Input>
         <Button>Search</Button>
         <Dropdown>
           <option value="low to high">Low to High</option>

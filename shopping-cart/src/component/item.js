@@ -5,26 +5,6 @@ import styled from "styled-components";
 
 export default class Item extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   //this.eventHandler = this.eventHandler.bind(this);
-  //   // this.state = {
-  //   //   countItem: 0,
-  //   //   addItem: [],
-  //   //   itemName: this.props.nameTitle,
-  //   //
-  //   // };
-  // }
-  //
-  // eventHandler(e) {
-  //   this.setState({ countItem: this.state.countItem + 1 });
-  //   this.setState({ addItem: [...this.state.addItem, this.state.addItem] });
-  //   console.log(this.state.countItem);
-  //   console.log(this.state.addItem);
-  //   console.log(this.state.itemName);
-  //
-  // }
-
 
   render() {
     return (
@@ -34,7 +14,7 @@ export default class Item extends Component {
         <Imageitem src={this.props.itemImage} alt="itemOne" />
         <Nametitle className="name-title">{this.props.nameTitle}</Nametitle>
         <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
-        <Button onClick={() => context.changeStateFn.addingItem(context.globalState.countItem + 1)}>add to cart +</Button>
+        <Button onClick={() => context.changeStateFn.addingItem(context.globalState.countItem + 1,this.props.nameTitle, this.props.itemPrice,)}>add to cart +</Button>
       </Itemcard>
       )}
       </GlobalContext.Consumer>

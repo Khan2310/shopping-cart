@@ -5,13 +5,15 @@ export const GlobalContext = React.createContext();
 export default class StateProvider extends Component{
   state = {
     countItem: 0,
-    itemPrice: 0,
+    itemPrice: [],
     itemNames: []
   };
 
   changeStateFn = {
-    addingItem: countItem => {
+    addingItem: (countItem, itemNames, itemPrice) => {
       this.setState({ countItem });
+      this.setState({ itemPrice: [...this.state.itemPrice, itemPrice] });
+      this.setState({ itemNames: [...this.state.itemNames, itemNames] });
     }
   };
 
