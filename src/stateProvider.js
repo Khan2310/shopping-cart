@@ -17,6 +17,10 @@ export default class StateProvider extends Component {
           { name: itemNames, price: itemPrice }
         ]
       });
+    },
+    deleteItem: (countItem, indx) => {
+      this.setState({ countItem });
+      this.state.itemList.splice(indx,1);
     }
   };
 

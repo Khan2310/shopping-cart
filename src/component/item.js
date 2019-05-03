@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "./button";
 import {GlobalContext} from "../stateProvider";
 import styled from "styled-components";
 
@@ -14,7 +15,7 @@ export default class Item extends Component {
         <Imageitem src={this.props.itemImage} alt="itemOne" />
         <Nametitle className="name-title">{this.props.nameTitle}</Nametitle>
         <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
-        <Button onClick={() => context.changeStateFn.addingItem(context.globalState.countItem + 1,this.props.nameTitle, this.props.itemPrice,)}>add to cart +</Button>
+        <Button eventMethod = {() => context.changeStateFn.addingItem(context.globalState.countItem + 1,this.props.nameTitle, this.props.itemPrice,)} title = "add to cart +" />
       </Itemcard>
       )}
       </GlobalContext.Consumer>
@@ -41,17 +42,4 @@ const Nametitle = styled.div`
 
 const Pricetag = styled(Nametitle)`
   color: #9c9fa3;
-`;
-
-const Button = styled.button`
-background: palevioletred;
-color: white;
-font-size: 1em;
-margin:1em;
-padding: 0.25em 1em;
-border: 2px solid palevioletred;
-border-radius: 3px;
-:hover{
-  background: red;
-}
 `;

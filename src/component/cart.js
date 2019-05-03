@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Button from "./button";
 import styled from "styled-components";
 import { GlobalContext } from "../stateProvider";
 
@@ -13,7 +14,7 @@ export default class Cart extends Component {
             return (
               <div className={key}>
                 {item.name} price: {item.price}
-                <button>delete</button>
+                <Button eventMethod = {() => context.changeStateFn.deleteItem(context.globalState.countItem - 1, key)} title = "delete" />
               </div>
             );
           })
@@ -41,16 +42,3 @@ export default class Cart extends Component {
     );
   }
 }
-
-const Button = styled.button`
-  background: palevioletred;
-  color: white;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  :hover {
-    background: red;
-  }
-`;
