@@ -5,7 +5,6 @@ import Cart from "./cart";
 import styled from "styled-components";
 
 export default class BodyCompo extends Component {
-
   render() {
     const itemList = (
       <GlobalContext.Consumer>
@@ -13,11 +12,11 @@ export default class BodyCompo extends Component {
           context.globalState.shoppingItems.map((info, key) => {
             return (
               <Item
-                itemImage = {info.imageItem}
+                itemImage={info.imageItem}
                 nameTitle={info.nameTitle}
-                itemPrice= {info.itemPrice}
-                id= {key}
-                />
+                itemPrice={info.itemPrice}
+                key={key}
+              />
             );
           })
         }
@@ -25,12 +24,12 @@ export default class BodyCompo extends Component {
     );
     return (
       <Bodycontainer className="body-container">
-         <Itemcontainer className="item-container-body">
-            {itemList}
-         </Itemcontainer>
-         <Itemcart className="item-cart-body">
-            <Cart/>
-         </Itemcart>
+        <Itemcontainer className="item-container-body">
+          {itemList}
+        </Itemcontainer>
+        <Itemcart className="item-cart-body">
+          <Cart />
+        </Itemcart>
       </Bodycontainer>
     );
   }
@@ -40,10 +39,9 @@ const Bodycontainer = styled.div`
   display: flex;
 `;
 
-
 const Itemcontainer = styled.div`
-  width:70%;
-  padding:0;
+  width: 70%;
+  padding: 0;
   //border: 2px solid #9c9fa3;
   display: flex;
   flex-wrap: wrap;
@@ -52,7 +50,7 @@ const Itemcontainer = styled.div`
 
 const Itemcart = styled.div`
   border: 1px solid #9c9fa3;
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   width: 30%;
 `;

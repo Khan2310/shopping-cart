@@ -1,23 +1,29 @@
 import React, { Component } from "react";
 import Button from "./button";
-import {GlobalContext} from "../stateProvider";
+import { GlobalContext } from "../stateProvider";
 import styled from "styled-components";
 
-
 export default class Item extends Component {
-
-
   render() {
     return (
       <GlobalContext.Consumer>
-      {context => (
-      <Itemcard className="item-card">
-        <Imageitem src={this.props.itemImage} alt="itemOne" />
-        <Nametitle className="name-title">{this.props.nameTitle}</Nametitle>
-        <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
-        <Button eventMethod = {() => context.changeStateFn.addingItem(context.globalState.countItem + 1,this.props.nameTitle, this.props.itemPrice,)} title = "add to cart +" />
-      </Itemcard>
-      )}
+        {context => (
+          <Itemcard className="item-card">
+            <Imageitem src={this.props.itemImage} alt="itemOne" />
+            <Nametitle className="name-title">{this.props.nameTitle}</Nametitle>
+            <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
+            <Button
+              eventMethod={() =>
+                context.changeStateFn.addingItem(
+                  context.globalState.countItem + 1,
+                  this.props.nameTitle,
+                  this.props.itemPrice
+                )
+              }
+              title="add to cart +"
+            />
+          </Itemcard>
+        )}
       </GlobalContext.Consumer>
     );
   }

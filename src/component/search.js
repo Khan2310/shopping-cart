@@ -3,6 +3,13 @@ import { GlobalContext } from "../stateProvider";
 import styled from "styled-components";
 
 export default class Search extends Component {
+  handleKeyUp = e => {
+    this.context.changeStateFn.searchBoxInputHandler(e);
+    if (e.keyCode === 13 && this.context.globalState.searchInputValue !== "") {
+      this.context.changeStateFn.searchItemEventHandler(e);
+    }
+  };
+
   render() {
     return (
       <GlobalContext.Consumer>
@@ -10,7 +17,7 @@ export default class Search extends Component {
           <Searchcontainer className="search-container">
             <Input
               className="search-box"
-              onKeyUp={context.changeStateFn.searchBoxInputHandler.bind(this)}
+              onKeyUp={this.handleKeyUp}
               placeholder="Search Items..."
             />
             <Button
@@ -29,6 +36,8 @@ export default class Search extends Component {
     );
   }
 }
+
+Search.contextType = GlobalContext;
 
 const Searchcontainer = styled.div`
   margin: 1em;

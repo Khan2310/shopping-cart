@@ -35,9 +35,7 @@ export default class Cart extends Component {
             <React.Fragment>
               <h4>
                 Total Items :
-                <span>
-                  {console.log(context)} {context.globalState.countItem}
-                </span>
+                <span>{context.globalState.countItem}</span>
               </h4>
               <div>{itemList}</div>
             </React.Fragment>
