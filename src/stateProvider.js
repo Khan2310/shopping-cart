@@ -14,47 +14,49 @@ export default class StateProvider extends Component {
   state = {
     countItem: 0,
     itemList: [],
-    shoppingItems: [{
-      imageItem: Itemimage1,
-      nameTitle: "Bag 01",
-      itemPrice: "$297"
-    },
-    {
-      imageItem: Itemimage2,
-      nameTitle: "Bag 02",
-      itemPrice: "$623"
-    },
-    {
-      imageItem: Itemimage3,
-      nameTitle: "Laptop 01",
-      itemPrice: "$823"
-    },
-    {
-      imageItem: Itemimage4,
-      nameTitle: "Laptop 02",
-      itemPrice: "$423"
-    },
-    {
-      imageItem: Itemimage5,
-      nameTitle: "Mobile 01",
-      itemPrice: "$217"
-    },
-    {
-      imageItem: Itemimage6,
-      nameTitle: "Mobile 02",
-      itemPrice: "$323"
-    },
-    {
-      imageItem: Itemimage7,
-      nameTitle: "Watch 01",
-      itemPrice: "$523"
-    },
-    {
-      imageItem: Itemimage8,
-      nameTitle: "Watch 02",
-      itemPrice: "$293"
-    }
-  ]
+    searchInputValue: "",
+    shoppingItems: [
+      {
+        imageItem: Itemimage1,
+        nameTitle: "Bag 01",
+        itemPrice: "$297"
+      },
+      {
+        imageItem: Itemimage2,
+        nameTitle: "Bag 02",
+        itemPrice: "$623"
+      },
+      {
+        imageItem: Itemimage3,
+        nameTitle: "Laptop 01",
+        itemPrice: "$823"
+      },
+      {
+        imageItem: Itemimage4,
+        nameTitle: "Laptop 02",
+        itemPrice: "$423"
+      },
+      {
+        imageItem: Itemimage5,
+        nameTitle: "Mobile 01",
+        itemPrice: "$217"
+      },
+      {
+        imageItem: Itemimage6,
+        nameTitle: "Mobile 02",
+        itemPrice: "$323"
+      },
+      {
+        imageItem: Itemimage7,
+        nameTitle: "Watch 01",
+        itemPrice: "$523"
+      },
+      {
+        imageItem: Itemimage8,
+        nameTitle: "Watch 02",
+        itemPrice: "$293"
+      }
+    ]
   };
 
   changeStateFn = {
@@ -69,7 +71,25 @@ export default class StateProvider extends Component {
     },
     deleteItem: (countItem, indx) => {
       this.setState({ countItem });
-      this.state.itemList.splice(indx,1);
+      this.state.itemList.splice(indx, 1);
+    },
+    searchItemEventHandler: e => {
+      if (this.state.searchInputValue !== "") {
+        //console.log(this.state.searchInputValue);
+        let filteredItem = this.state.shoppingItems.filter(item => {
+          return (
+            item.nameTitle.toUpperCase() ===
+            this.state.searchInputValue.toUpperCase()
+          );
+        });
+        console.log(filteredItem);
+      }
+      // this.setState({ countItem });
+      // this.state.itemList.splice(indx, 1);
+    },
+    searchBoxInputHandler: event => {
+      // console.log(event.target.value);
+      this.setState({ searchInputValue: event.target.value });
     }
   };
 
