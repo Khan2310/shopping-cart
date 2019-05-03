@@ -118,23 +118,25 @@ export default class StateProvider extends Component {
     },
     searchItemEventHandler: e => {
       if (this.state.searchInputValue !== "") {
-        //console.log(this.state.searchInputValue);
-        let shoppingItems = this.state.shoppingItems.filter(item => {
-          return (
-            item.nameTitle.toUpperCase() ===
-            this.state.searchInputValue.toUpperCase()
-          );
+        let shoppingItems = [];
+        this.staticItemList.forEach(item => {
+          if (
+            item.nameTitle
+              .toLocaleLowerCase()
+              .match(this.state.searchInputValue.toLocaleLowerCase())
+          ) {
+            shoppingItems.push(item);
+          }
         });
-        this.setState({ shoppingItems });
-        //shoppingItems;
-        //console.log(filteredItem);
+        this.setState({ shoppingItems }, console.log(shoppingItems));
       }
-      // this.setState({ countItem });
-      // this.state.itemList.splice(indx, 1);
     },
     searchBoxInputHandler: event => {
       // console.log(event.target.value);
       this.setState({ searchInputValue: event.target.value });
+    },
+    resetStaticItemList: () => {
+      this.setState({ shoppingItems: this.staticItemList });
     }
   };
 

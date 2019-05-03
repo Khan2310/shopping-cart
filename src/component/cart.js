@@ -7,16 +7,16 @@ export default class Cart extends Component {
     const itemList = (
       <GlobalContext.Consumer>
         {context =>
-          context.globalState.itemList.map((item, key) => {
+          context.globalState.itemList.map((item, idx) => {
             let itemString = `${item.name} price: ${item.price}`;
             return (
               <CartItem
-                keyp={key}
+                key={idx}
                 item={itemString}
                 method={() =>
                   context.changeStateFn.deleteItem(
                     context.globalState.countItem - 1,
-                    key
+                    idx
                   )
                 }
                 title="delete"
