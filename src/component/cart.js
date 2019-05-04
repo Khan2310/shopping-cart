@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CartItem from "./cartItem";
+import styled from "styled-components";
 import { GlobalContext } from "../stateProvider";
 
 export default class Cart extends Component {
@@ -35,9 +36,9 @@ export default class Cart extends Component {
             <React.Fragment>
               <h4>
                 Total Items :
-                <span>{context.globalState.countItem}</span>
+                <span> {context.globalState.countItem}</span>
               </h4>
-              <div>{itemList}</div>
+              <CartItemBlock>{itemList}</CartItemBlock>
             </React.Fragment>
           )}
         </GlobalContext.Consumer>
@@ -45,3 +46,8 @@ export default class Cart extends Component {
     );
   }
 }
+
+const CartItemBlock = styled.div`
+  overflow: scroll;
+  height: 50rem;
+`;
