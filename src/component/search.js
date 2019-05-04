@@ -44,16 +44,26 @@ const Searchcontainer = styled.div`
   padding: 1em;
   display: flex;
   justify-content: center;
+  @media (max-width: 650px) {
+    flex-direction: column;
+  }
 `;
 
 const Input = styled.input`
   font-size: 2em;
+  @media (max-width: 650px) {
+    font-size: 1.5em;
+  }
 `;
 
 const Dropdown = styled.select`
   margin-left: 2em;
   border: 2px solid palevioletred;
   font-size: 1em;
+  @media (max-width: 650px) {
+    margin: 0;
+    padding: 0.5em;
+  }
 `;
 
 const Button = styled.button`
@@ -66,5 +76,10 @@ const Button = styled.button`
   border-radius: 3px;
   :hover {
     background: red;
+  }
+
+  @media (max-width: 650px) {
+    margin: 1em;
+    padding: 0.5em;
   }
 `;

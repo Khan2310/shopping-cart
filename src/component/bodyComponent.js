@@ -40,17 +40,32 @@ const Bodycontainer = styled.div`
 `;
 
 const Itemcontainer = styled.div`
-  width: 70%;
+  width: 75%;
   padding: 0;
-  //border: 2px solid #9c9fa3;
+  //border: 2px solid red;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 1em;
+  margin-left: 1em;
+  justify-content: center;
+
+  @media (max-width: 900px) {
+    width: 60%;
+  }
+  @media (max-width: 685px) {
+    width: 50%;
+  }
 `;
 
 const Itemcart = styled.div`
   border: 1px solid #9c9fa3;
-  margin: 0;
+  margin-right: 1em;
   padding: 0;
-  width: 30%;
+  width: 25%;
+  @media (max-width: 900px) {
+    width: 35%;
+  }
+  @media (max-width: 685px) {
+    width: 50%;
+    margin-left: 0.5rem;
+  }
 `;

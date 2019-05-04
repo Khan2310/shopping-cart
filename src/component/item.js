@@ -31,10 +31,17 @@ export default class Item extends Component {
 
 const Itemcard = styled.div`
   border: 1px solid #9c9fa3;
-  width: 24%;
+  width: 24.5%;
   height: auto;
   overflow: hidden;
   padding-bottom: 2em;
+
+  @media (max-width: 900px) {
+    width: 49.5%;
+  }
+  @media (max-width: 685px) {
+    width: 100%;
+  }
 `;
 
 const Imageitem = styled.img`

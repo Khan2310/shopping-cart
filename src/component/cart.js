@@ -49,5 +49,4 @@ export default class Cart extends Component {
 
 const CartItemBlock = styled.div`
   overflow: scroll;
-  height: 50rem;
 `;
