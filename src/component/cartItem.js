@@ -14,8 +14,9 @@ export default class CartItem extends Component {
 }
 
 const ItemName = styled.p`
+  display: flex;
+  align-items: center;
   @media (max-width: 500px) {
-    display: flex;
     justify-content: center;
   }
 `;

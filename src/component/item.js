@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import ShowSingleItem from "./showSingleItem";
 import Button from "./button";
 import { GlobalContext } from "../stateProvider";
 import styled from "styled-components";
@@ -6,25 +8,38 @@ import styled from "styled-components";
 export default class Item extends Component {
   render() {
     return (
-      <GlobalContext.Consumer>
-        {context => (
-          <Itemcard className="item-card">
-            <Imageitem src={this.props.itemImage} alt="itemOne" />
-            <Nametitle className="name-title">{this.props.nameTitle}</Nametitle>
-            <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
-            <Button
-              eventMethod={() =>
-                context.changeStateFn.addingItem(
-                  context.globalState.countItem + 1,
-                  this.props.nameTitle,
-                  this.props.itemPrice
-                )
-              }
-              title="add to cart +"
-            />
-          </Itemcard>
-        )}
-      </GlobalContext.Consumer>
+      <Router>
+        <GlobalContext.Consumer>
+          {context => (
+            <Itemcard className="item-card">
+              <Link className="router-link" to={`/${this.props.nameTitle}/`}>
+                <Imageitem src={this.props.itemImage} alt="itemOne" />
+                <Nametitle className="name-title">
+                  {this.props.nameTitle}
+                </Nametitle>
+              </Link>
+
+              <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
+              <Button
+                eventMethod={() =>
+                  context.changeStateFn.addingItem(
+                    context.globalState.countItem + 1,
+                    this.props.nameTitle,
+                    this.props.itemPrice
+                  )
+                }
+                title="add to cart +"
+              />
+            </Itemcard>
+          )}
+        </GlobalContext.Consumer>
+        <Switch>
+          <Route
+            path={`/${this.props.nameTitle}/`}
+            component={ShowSingleItem}
+          />
+        </Switch>
+      </Router>
     );
   }
 }
@@ -51,6 +66,8 @@ const Imageitem = styled.img`
 
 const Nametitle = styled.div`
   margin-left: 1em;
+  color:black
+  text-decoration: none;
 `;
 
 const Pricetag = styled(Nametitle)`
