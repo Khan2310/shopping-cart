@@ -14,13 +14,20 @@ export default class CartItem extends Component {
 }
 
 const ItemName = styled.p`
-  border: 2x solid red;
+  @media (max-width: 500px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 const ShowItem = styled.div`
+  background: #eff3f4;
+  margin: 0.3em 0;
   display: flex;
   justify-content: space-between;
-  border: 2x solid yellow;
+  //border: 2px solid black;
+
   @media (max-width: 500px) {
     flex-direction: column;
+    justify-content: center;
   }
 `;

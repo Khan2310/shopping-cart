@@ -6,22 +6,22 @@ import styled from "styled-components";
 
 export default class BodyCompo extends Component {
   render() {
-    const itemList = (
-      <GlobalContext.Consumer>
-        {context =>
-          context.globalState.shoppingItems.map((info, key) => {
-            return (
-              <Item
-                itemImage={info.imageItem}
-                nameTitle={info.nameTitle}
-                itemPrice={info.itemPrice}
-                key={key}
-              />
-            );
-          })
-        }
-      </GlobalContext.Consumer>
-    );
+    let itemList;
+    if (this.context.globalState.shoppingItems.length === 0) {
+      itemList = <h1>Item not found...</h1>;
+    } else {
+      itemList = this.context.globalState.shoppingItems.map((info, key) => {
+        return (
+          <Item
+            itemImage={info.imageItem}
+            nameTitle={info.nameTitle}
+            itemPrice={info.itemPrice}
+            key={key}
+          />
+        );
+      });
+    }
+
     return (
       <Bodycontainer className="body-container">
         <Itemcontainer className="item-container-body">
@@ -34,6 +34,8 @@ export default class BodyCompo extends Component {
     );
   }
 }
+
+BodyCompo.contextType = GlobalContext;
 
 const Bodycontainer = styled.div`
   display: flex;

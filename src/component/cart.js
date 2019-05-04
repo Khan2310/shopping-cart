@@ -48,5 +48,5 @@ export default class Cart extends Component {
 }
 
 const CartItemBlock = styled.div`
-  overflow: scroll;
+  //overflow: scroll;
 `;
