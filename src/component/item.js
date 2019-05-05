@@ -62,6 +62,9 @@ const Itemcard = styled.div`
 const Imageitem = styled.img`
   width: 100%;
   height: auto;
+  :hover {
+    opacity: 0.3;
+  }
 `;
 
 const Nametitle = styled.div`
