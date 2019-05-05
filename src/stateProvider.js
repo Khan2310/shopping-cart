@@ -89,45 +89,62 @@ export default class StateProvider extends Component {
 
       if (e.target.value === "low") {
         shoppingItemsPriceSort = shoppingItemsPrice.sort();
-        console.log(
-          "i'm sorting method",
-          e.target.value,
-          shoppingItemsPriceSort
-        );
-        //this.setState({ shoppingItems });
+        // console.log(
+        //   "i'm sorting method",
+        //   e.target.value,
+        //   shoppingItemsPriceSort
+        // );
+        shoppingItemsPriceSort.forEach(sortItem => {
+          this.staticItemList.forEach(staticItem => {
+            //console.log(staticItem);
+            if (staticItem.itemPrice === sortItem) {
+              shoppingItems.push(staticItem);
+            }
+          });
+        });
+        this.setState({ shoppingItems });
       } else if (e.target.value === "high") {
         shoppingItemsPriceSort = shoppingItemsPrice.sort().reverse();
-        console.log(
-          "i'm sorting method",
-          e.target.value,
-          shoppingItemsPriceSort
-        );
-        //////////////////////////////////////////////////////////////////////
-        // shoppingItemsPriceSort.forEach(sortItem => {
-        //   this.staticItemList.forEach(staticItem => {
-        //     if (staticItem.itemPrice === sortItem) {
-        //       shoppingItems.push(staticItem);
-        //     }
-        //   });
-        // });
-        // console.log(shoppingItems);
-        /////////////////////////////////////////////////////////////////////////
+        // console.log(
+        //   "i'm sorting method",
+        //   e.target.value,
+        //   shoppingItemsPriceSort
+        // );
+        shoppingItemsPriceSort.forEach(sortItem => {
+          this.staticItemList.forEach(staticItem => {
+            //console.log(staticItem);
+            if (staticItem.itemPrice === sortItem) {
+              shoppingItems.push(staticItem);
+            }
+          });
+        });
+        this.setState({ shoppingItems });
       } else {
         let shoppingItemsName = this.staticItemList.map(item => {
           return item.nameTitle;
         });
         shoppingItemsNameSort = shoppingItemsName.sort();
-        console.log(
-          "i'm sorting method ",
-          e.target.value,
-          shoppingItemsNameSort
-        );
+        // console.log(
+        //   "i'm sorting method ",
+        //   e.target.value,
+        //   shoppingItemsNameSort
+        // );
+        shoppingItemsNameSort.forEach(sortItem => {
+          this.staticItemList.forEach(staticItem => {
+            //console.log(staticItem);
+            if (staticItem.nameTitle === sortItem) {
+              shoppingItems.push(staticItem);
+            }
+          });
+        });
+        this.setState({ shoppingItems });
       }
     },
     searchItemEventHandler: e => {
       if (this.state.searchInputValue !== "") {
         let shoppingItems = [];
         this.staticItemList.forEach(item => {
+          console.log(item);
           if (
             item.nameTitle
               .toLocaleLowerCase()
