@@ -116,6 +116,15 @@ export default class StateProvider extends Component {
       this.setState({ countItem });
       this.state.itemList.splice(indx, 1);
     },
+    sortItemEventHandler: e => {
+      if (e.target.value === "low") {
+        console.log("i'm sorting method ", e.target.value);
+      } else if (e.target.value === "high") {
+        console.log("i'm sorting method", e.target.value);
+      } else {
+        console.log("i'm sorting method ", e.target.value);
+      }
+    },
     searchItemEventHandler: e => {
       if (this.state.searchInputValue !== "") {
         let shoppingItems = [];

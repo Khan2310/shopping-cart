@@ -12,27 +12,23 @@ export default class Search extends Component {
 
   render() {
     return (
-      <GlobalContext.Consumer>
-        {context => (
-          <Searchcontainer className="search-container">
-            <Input
-              className="search-box"
-              onKeyUp={this.handleKeyUp}
-              placeholder="Search Items..."
-            />
-            <Button
-              onClick={context.changeStateFn.searchItemEventHandler.bind(this)}
-            >
-              Search
-            </Button>
-            <Dropdown>
-              <option value="low to high">Low to High</option>
-              <option value="high to low">High to Low</option>
-              <option value="A-Z">A-Z</option>
-            </Dropdown>
-          </Searchcontainer>
-        )}
-      </GlobalContext.Consumer>
+      <Searchcontainer className="search-container">
+        <Input
+          className="search-box"
+          onKeyUp={this.handleKeyUp}
+          placeholder="Search Items..."
+        />
+        <Button
+          onClick={this.context.changeStateFn.searchItemEventHandler.bind(this)}
+        >
+          Search
+        </Button>
+        <Dropdown onChange={this.context.changeStateFn.sortItemEventHandler}>
+          <option value="low">Low to High</option>
+          <option value="high">High to Low</option>
+          <option value="az">A-Z</option>
+        </Dropdown>
+      </Searchcontainer>
     );
   }
 }
