@@ -15,48 +15,7 @@ export default class StateProvider extends Component {
     countItem: 0,
     itemList: [],
     searchInputValue: "",
-    shoppingItems: [
-      {
-        imageItem: Itemimage1,
-        nameTitle: "Bag 01",
-        itemPrice: "$297"
-      },
-      {
-        imageItem: Itemimage2,
-        nameTitle: "Bag 02",
-        itemPrice: "$623"
-      },
-      {
-        imageItem: Itemimage3,
-        nameTitle: "Laptop 01",
-        itemPrice: "$823"
-      },
-      {
-        imageItem: Itemimage4,
-        nameTitle: "Laptop 02",
-        itemPrice: "$423"
-      },
-      {
-        imageItem: Itemimage5,
-        nameTitle: "Mobile 01",
-        itemPrice: "$217"
-      },
-      {
-        imageItem: Itemimage6,
-        nameTitle: "Mobile 02",
-        itemPrice: "$323"
-      },
-      {
-        imageItem: Itemimage7,
-        nameTitle: "Watch 01",
-        itemPrice: "$523"
-      },
-      {
-        imageItem: Itemimage8,
-        nameTitle: "Watch 02",
-        itemPrice: "$293"
-      }
-    ]
+    shoppingItems: []
   };
 
   staticItemList = [
@@ -102,6 +61,10 @@ export default class StateProvider extends Component {
     }
   ];
 
+  componentDidMount() {
+    this.setState({ shoppingItems: this.staticItemList });
+  }
+
   changeStateFn = {
     addingItem: (countItem, itemNames, itemPrice) => {
       this.setState({ countItem });
@@ -117,12 +80,48 @@ export default class StateProvider extends Component {
       this.state.itemList.splice(indx, 1);
     },
     sortItemEventHandler: e => {
+      let shoppingItems = [];
+      let shoppingItemsPriceSort;
+      let shoppingItemsNameSort;
+      let shoppingItemsPrice = this.staticItemList.map(item => {
+        return item.itemPrice;
+      });
+
       if (e.target.value === "low") {
-        console.log("i'm sorting method ", e.target.value);
+        shoppingItemsPriceSort = shoppingItemsPrice.sort();
+        console.log(
+          "i'm sorting method",
+          e.target.value,
+          shoppingItemsPriceSort
+        );
+        //this.setState({ shoppingItems });
       } else if (e.target.value === "high") {
-        console.log("i'm sorting method", e.target.value);
+        shoppingItemsPriceSort = shoppingItemsPrice.sort().reverse();
+        console.log(
+          "i'm sorting method",
+          e.target.value,
+          shoppingItemsPriceSort
+        );
+        //////////////////////////////////////////////////////////////////////
+        // shoppingItemsPriceSort.forEach(sortItem => {
+        //   this.staticItemList.forEach(staticItem => {
+        //     if (staticItem.itemPrice === sortItem) {
+        //       shoppingItems.push(staticItem);
+        //     }
+        //   });
+        // });
+        // console.log(shoppingItems);
+        /////////////////////////////////////////////////////////////////////////
       } else {
-        console.log("i'm sorting method ", e.target.value);
+        let shoppingItemsName = this.staticItemList.map(item => {
+          return item.nameTitle;
+        });
+        shoppingItemsNameSort = shoppingItemsName.sort();
+        console.log(
+          "i'm sorting method ",
+          e.target.value,
+          shoppingItemsNameSort
+        );
       }
     },
     searchItemEventHandler: e => {
@@ -137,7 +136,7 @@ export default class StateProvider extends Component {
             shoppingItems.push(item);
           }
         });
-        this.setState({ shoppingItems }, console.log(shoppingItems));
+        this.setState({ shoppingItems });
       }
     },
     searchBoxInputHandler: event => {
