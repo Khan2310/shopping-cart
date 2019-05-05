@@ -8,7 +8,7 @@ export default class BodyCompo extends Component {
   render() {
     let itemList;
     if (this.context.globalState.shoppingItems.length === 0) {
-      itemList = <h1>Item not found...</h1>;
+      itemList = <ItemNotFound>Item not found...</ItemNotFound>;
     } else {
       itemList = this.context.globalState.shoppingItems.map((info, key) => {
         return (
@@ -70,4 +70,8 @@ const Itemcart = styled.div`
     width: 50%;
     margin-left: 0.5rem;
   }
+`;
+
+const ItemNotFound = styled.h2`
+  color: red;
 `;

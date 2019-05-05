@@ -12,7 +12,12 @@ export default class Item extends Component {
         <GlobalContext.Consumer>
           {context => (
             <Itemcard className="item-card">
-              <Link className="router-link" to={`/${this.props.nameTitle}/`}>
+              <Link
+                value={this.props.nameTitle}
+                onClick={context.changeStateFn.showSingleItemEventHandler}
+                className="router-link"
+                to={`/${this.props.nameTitle}/`}
+              >
                 <Imageitem src={this.props.itemImage} alt="itemOne" />
                 <Nametitle className="name-title">
                   {this.props.nameTitle}

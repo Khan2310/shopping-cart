@@ -83,7 +83,7 @@ export default class StateProvider extends Component {
       let shoppingItems = [];
       let shoppingItemsPriceSort;
       let shoppingItemsNameSort;
-      let shoppingItemsPrice = this.staticItemList.map(item => {
+      let shoppingItemsPrice = this.state.shoppingItems.map(item => {
         return item.itemPrice;
       });
 
@@ -95,10 +95,10 @@ export default class StateProvider extends Component {
         //   shoppingItemsPriceSort
         // );
         shoppingItemsPriceSort.forEach(sortItem => {
-          this.staticItemList.forEach(staticItem => {
-            //console.log(staticItem);
-            if (staticItem.itemPrice === sortItem) {
-              shoppingItems.push(staticItem);
+          this.state.shoppingItems.forEach(presentStateItem => {
+            //console.log(presentStateItem);
+            if (presentStateItem.itemPrice === sortItem) {
+              shoppingItems.push(presentStateItem);
             }
           });
         });
@@ -111,16 +111,16 @@ export default class StateProvider extends Component {
         //   shoppingItemsPriceSort
         // );
         shoppingItemsPriceSort.forEach(sortItem => {
-          this.staticItemList.forEach(staticItem => {
-            //console.log(staticItem);
-            if (staticItem.itemPrice === sortItem) {
-              shoppingItems.push(staticItem);
+          this.state.shoppingItems.forEach(presentStateItem => {
+            //console.log(presentStateItem);
+            if (presentStateItem.itemPrice === sortItem) {
+              shoppingItems.push(presentStateItem);
             }
           });
         });
         this.setState({ shoppingItems });
       } else {
-        let shoppingItemsName = this.staticItemList.map(item => {
+        let shoppingItemsName = this.state.shoppingItems.map(item => {
           return item.nameTitle;
         });
         shoppingItemsNameSort = shoppingItemsName.sort();
@@ -130,10 +130,10 @@ export default class StateProvider extends Component {
         //   shoppingItemsNameSort
         // );
         shoppingItemsNameSort.forEach(sortItem => {
-          this.staticItemList.forEach(staticItem => {
-            //console.log(staticItem);
-            if (staticItem.nameTitle === sortItem) {
-              shoppingItems.push(staticItem);
+          this.state.shoppingItems.forEach(presentStateItem => {
+            //console.log(presentStateItem);
+            if (presentStateItem.nameTitle === sortItem) {
+              shoppingItems.push(presentStateItem);
             }
           });
         });
@@ -144,7 +144,7 @@ export default class StateProvider extends Component {
       if (this.state.searchInputValue !== "") {
         let shoppingItems = [];
         this.staticItemList.forEach(item => {
-          console.log(item);
+          //console.log(item);
           if (
             item.nameTitle
               .toLocaleLowerCase()
@@ -159,6 +159,11 @@ export default class StateProvider extends Component {
     searchBoxInputHandler: event => {
       // console.log(event.target.value);
       this.setState({ searchInputValue: event.target.value });
+    },
+    showSingleItemEventHandler: event => {
+      console.log("clicked Single Item Event Handler", event.target);
+      //window.open("_blank");
+      //this.setState({ shoppingItems });
     },
     resetStaticItemList: () => {
       this.setState({ shoppingItems: this.staticItemList });
