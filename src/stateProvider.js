@@ -89,14 +89,8 @@ export default class StateProvider extends Component {
 
       if (e.target.value === "low") {
         shoppingItemsPriceSort = shoppingItemsPrice.sort();
-        // console.log(
-        //   "i'm sorting method",
-        //   e.target.value,
-        //   shoppingItemsPriceSort
-        // );
         shoppingItemsPriceSort.forEach(sortItem => {
           this.state.shoppingItems.forEach(presentStateItem => {
-            //console.log(presentStateItem);
             if (presentStateItem.itemPrice === sortItem) {
               shoppingItems.push(presentStateItem);
             }
@@ -105,14 +99,8 @@ export default class StateProvider extends Component {
         this.setState({ shoppingItems });
       } else if (e.target.value === "high") {
         shoppingItemsPriceSort = shoppingItemsPrice.sort().reverse();
-        // console.log(
-        //   "i'm sorting method",
-        //   e.target.value,
-        //   shoppingItemsPriceSort
-        // );
         shoppingItemsPriceSort.forEach(sortItem => {
           this.state.shoppingItems.forEach(presentStateItem => {
-            //console.log(presentStateItem);
             if (presentStateItem.itemPrice === sortItem) {
               shoppingItems.push(presentStateItem);
             }
@@ -124,14 +112,8 @@ export default class StateProvider extends Component {
           return item.nameTitle;
         });
         shoppingItemsNameSort = shoppingItemsName.sort();
-        // console.log(
-        //   "i'm sorting method ",
-        //   e.target.value,
-        //   shoppingItemsNameSort
-        // );
         shoppingItemsNameSort.forEach(sortItem => {
           this.state.shoppingItems.forEach(presentStateItem => {
-            //console.log(presentStateItem);
             if (presentStateItem.nameTitle === sortItem) {
               shoppingItems.push(presentStateItem);
             }
@@ -144,7 +126,6 @@ export default class StateProvider extends Component {
       if (this.state.searchInputValue !== "") {
         let shoppingItems = [];
         this.staticItemList.forEach(item => {
-          //console.log(item);
           if (
             item.nameTitle
               .toLocaleLowerCase()
@@ -157,7 +138,6 @@ export default class StateProvider extends Component {
       }
     },
     searchBoxInputHandler: event => {
-      // console.log(event.target.value);
       this.setState({ searchInputValue: event.target.value });
     },
     showSingleItemEventHandler: event => {

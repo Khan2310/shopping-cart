@@ -13,7 +13,6 @@ export default class Item extends Component {
           {context => (
             <Itemcard className="item-card">
               <Link
-                value={this.props.nameTitle}
                 onClick={context.changeStateFn.showSingleItemEventHandler}
                 className="router-link"
                 to={`/${this.props.nameTitle}/`}
