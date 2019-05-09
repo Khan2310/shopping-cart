@@ -1,16 +1,34 @@
 import React, { Component } from "react";
 import { GlobalContext } from "../stateProvider";
 import Item from "./item";
+import SingleItem from "./showSingleItem";
 import Cart from "./cart";
 import styled from "styled-components";
 
 export default class BodyCompo extends Component {
   render() {
+    let shoppingItems = this.context.globalState.shoppingItems;
     let itemList;
-    if (this.context.globalState.shoppingItems.length === 0) {
+    if (shoppingItems.length === 0) {
       itemList = <ItemNotFound>Item not found...</ItemNotFound>;
+    } else if (shoppingItems.length === 1) {
+      itemList = (
+        <SingleItem
+          itemImage={shoppingItems[0].imageItem}
+          nameTitle={shoppingItems[0].nameTitle}
+          itemPrice={shoppingItems[0].itemPrice}
+          eventMethod={() =>
+            this.context.changeStateFn.addingItem(
+              this.context.globalState.countItem + 1,
+              shoppingItems[0].nameTitle,
+              shoppingItems[0].itemPrice
+            )
+          }
+          title="add to cart +"
+        />
+      );
     } else {
-      itemList = this.context.globalState.shoppingItems.map((info, key) => {
+      itemList = shoppingItems.map((info, key) => {
         return (
           <Item
             itemImage={info.imageItem}

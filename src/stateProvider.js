@@ -141,9 +141,16 @@ export default class StateProvider extends Component {
       this.setState({ searchInputValue: event.target.value });
     },
     showSingleItemEventHandler: event => {
-      console.log("clicked Single Item Event Handler", event.target);
-      //window.open("_blank");
-      //this.setState({ shoppingItems });
+      let shoppingItems = [];
+      this.staticItemList.forEach(item => {
+        if (
+          item.nameTitle.toLocaleLowerCase() ===
+          event.target.alt.toLocaleLowerCase()
+        ) {
+          shoppingItems.push(item);
+        }
+      });
+      this.setState({ shoppingItems });
     },
     resetStaticItemList: () => {
       this.setState({ shoppingItems: this.staticItemList });

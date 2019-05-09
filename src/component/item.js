@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
-import ShowSingleItem from "./showSingleItem";
 import Button from "./button";
 import { GlobalContext } from "../stateProvider";
 import styled from "styled-components";
@@ -8,42 +6,35 @@ import styled from "styled-components";
 export default class Item extends Component {
   render() {
     return (
-      <Router>
-        <GlobalContext.Consumer>
-          {context => (
-            <Itemcard className="item-card">
-              <Link
-                onClick={context.changeStateFn.showSingleItemEventHandler}
-                className="router-link"
-                to={`/${this.props.nameTitle}/`}
-              >
-                <Imageitem src={this.props.itemImage} alt="itemOne" />
-                <Nametitle className="name-title">
-                  {this.props.nameTitle}
-                </Nametitle>
-              </Link>
-
-              <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
-              <Button
-                eventMethod={() =>
-                  context.changeStateFn.addingItem(
-                    context.globalState.countItem + 1,
-                    this.props.nameTitle,
-                    this.props.itemPrice
-                  )
-                }
-                title="add to cart +"
+      <GlobalContext.Consumer>
+        {context => (
+          <Itemcard className="item-card">
+            <ContentHover
+              onClick={context.changeStateFn.showSingleItemEventHandler}
+            >
+              <Imageitem
+                src={this.props.itemImage}
+                alt={this.props.nameTitle}
               />
-            </Itemcard>
-          )}
-        </GlobalContext.Consumer>
-        <Switch>
-          <Route
-            path={`/${this.props.nameTitle}/`}
-            component={ShowSingleItem}
-          />
-        </Switch>
-      </Router>
+              <Nametitle className="name-title">
+                {this.props.nameTitle}
+              </Nametitle>
+            </ContentHover>
+
+            <Pricetag className="item-price">{this.props.itemPrice}</Pricetag>
+            <Button
+              eventMethod={() =>
+                context.changeStateFn.addingItem(
+                  context.globalState.countItem + 1,
+                  this.props.nameTitle,
+                  this.props.itemPrice
+                )
+              }
+              title="add to cart +"
+            />
+          </Itemcard>
+        )}
+      </GlobalContext.Consumer>
     );
   }
 }
@@ -66,15 +57,17 @@ const Itemcard = styled.div`
 const Imageitem = styled.img`
   width: 100%;
   height: auto;
-  :hover {
-    opacity: 0.3;
-  }
 `;
 
 const Nametitle = styled.div`
   margin-left: 1em;
   color:black
   text-decoration: none;
+`;
+const ContentHover = styled.div`
+  :hover {
+    opacity: 0.3;
+  }
 `;
 
 const Pricetag = styled(Nametitle)`
