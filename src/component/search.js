@@ -46,6 +46,7 @@ const Searchcontainer = styled.div`
 `;
 
 const Input = styled.input`
+  font-family: "Comfortaa", cursive;
   font-size: 2em;
   @media (max-width: 650px) {
     font-size: 1.5em;
@@ -53,6 +54,7 @@ const Input = styled.input`
 `;
 
 const Dropdown = styled.select`
+  font-family: "Comfortaa", cursive;
   margin-left: 2em;
   border: 2px solid palevioletred;
   font-size: 1em;
@@ -63,6 +65,7 @@ const Dropdown = styled.select`
 `;
 
 const Button = styled.button`
+  font-family: "Comfortaa", cursive;
   background: palevioletred;
   color: white;
   font-size: 1em;
@@ -71,7 +74,7 @@ const Button = styled.button`
   border: 2px solid palevioletred;
   border-radius: 3px;
   :hover {
-    background: red;
+    background: #d63031;
   }
 
   @media (max-width: 650px) {

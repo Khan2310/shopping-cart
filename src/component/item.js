@@ -30,7 +30,7 @@ export default class Item extends Component {
                   this.props.itemPrice
                 )
               }
-              title="add to cart +"
+              title="Add To Cart +"
             />
           </Itemcard>
         )}
@@ -60,6 +60,7 @@ const Imageitem = styled.img`
 `;
 
 const Nametitle = styled.div`
+  padding-top: .5em;
   margin-left: 1em;
   color:black
   text-decoration: none;

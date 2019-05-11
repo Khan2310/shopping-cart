@@ -12,6 +12,7 @@ export default class Item extends Component {
 }
 
 const Button = styled.button`
+  font-family: "Comfortaa", cursive;
   background: palevioletred;
   color: white;
   font-size: 1em;
@@ -20,6 +21,11 @@ const Button = styled.button`
   border: 2px solid palevioletred;
   border-radius: 3px;
   :hover {
-    background: red;
+    background: #d63031;
+  }
+
+  @media (max-width: 420px) {
+    padding: 0.3em;
+    font-weight: normal;
   }
 `;

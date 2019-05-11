@@ -24,7 +24,7 @@ export default class BodyCompo extends Component {
               shoppingItems[0].itemPrice
             )
           }
-          title="add to cart +"
+          title="Add To Cart +"
         />
       );
     } else {
@@ -77,7 +77,8 @@ const Itemcontainer = styled.div`
 `;
 
 const Itemcart = styled.div`
-  border: 1px solid #9c9fa3;
+  //border: 1px solid #9c9fa3;
+  background: #f1f2f6;
   margin-right: 1em;
   padding: 0;
   width: 25%;

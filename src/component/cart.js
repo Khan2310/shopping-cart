@@ -29,24 +29,49 @@ export default class Cart extends Component {
     );
 
     return (
-      <div>
-        <h2>Cart</h2>
-        <GlobalContext.Consumer>
-          {context => (
-            <React.Fragment>
-              <h4>
-                Total Items :
-                <span> {context.globalState.countItem}</span>
-              </h4>
-              <CartItemBlock>{itemList}</CartItemBlock>
-            </React.Fragment>
-          )}
-        </GlobalContext.Consumer>
-      </div>
+      <CartBody>
+        <TitleContent>
+          <Title>Cart</Title>
+          <TitleCount>
+            Total Items :
+            <span> {this.context.globalState.countItem}</span>
+          </TitleCount>
+        </TitleContent>
+        <div>{itemList}</div>
+      </CartBody>
     );
   }
 }
 
-const CartItemBlock = styled.div`
-  //overflow: scroll;
+Cart.contextType = GlobalContext;
+
+const CartBody = styled.div`
+  padding: 0;
+  margin: 0;
+  //border: 2px solid blue;
+  //background: red;
+`;
+
+const TitleContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  background: #ff7f50;
+`;
+const Title = styled.h2`
+  color: white;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+`;
+
+const TitleCount = styled.h4`
+  padding: 1em;
+  margin: 0;
+  display: flex;
+  @media (max-width: 400px) {
+    padding: 0;
+    justify-content: center;
+  }
 `;

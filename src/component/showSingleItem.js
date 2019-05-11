@@ -30,17 +30,17 @@ export default class ShowSingleItem extends Component {
 }
 
 const Itemcard = styled.div`
-  border: 1px solid #9c9fa3;
-  width: 70%;
+  //border: 1px solid #9c9fa3;
+  width: 45%;
   height: auto;
   overflow: hidden;
   padding-bottom: 2em;
 
-  @media (max-width: 900px) {
-    width: 49.5%;
-  }
-  @media (max-width: 685px) {
-    width: 100%;
+  // @media (max-width: 900px) {
+  //   width: 49.5%;
+  // }
+  @media (max-width: 1000px) {
+    width: 90%;
   }
 `;
 
@@ -53,10 +53,13 @@ const Nametitle = styled.div`
   display:flex;
   font-size: 2em;
   justify-content: center;
-  margin: auto;
+  margin-top: 0.3em;
   font-weight: bold;
   color:black
   text-decoration: none;
+  @media (max-width: 420px) {
+    font-size: 1em;
+  }
 `;
 
 const Pricetag = styled(Nametitle)`
@@ -66,15 +69,23 @@ const Pricetag = styled(Nametitle)`
 const Button = styled.button`
   background: palevioletred;
   display: flex;
-  font-size: 2em;
+  font-size: 1.2em;
+  font-weight: bold;
   justify-content: center;
   margin: auto;
   color: white;
-  font-size: 1em;
   padding: 1em 2em;
   border: 2px solid palevioletred;
   border-radius: 3px;
   :hover {
-    background: red;
+    background: #d63031;
+  }
+  @media (max-width: 500px) {
+    font-size: 1em;
+  }
+
+  @media (max-width: 420px) {
+    padding: 0.3em;
+    font-weight: normal;
   }
 `;
