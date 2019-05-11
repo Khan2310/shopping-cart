@@ -8,6 +8,15 @@ import Itemimage6 from "./component/image/mobile02.jpg";
 import Itemimage7 from "./component/image/watch01.jpg";
 import Itemimage8 from "./component/image/watch02.jpg";
 
+import Itemimage9 from "./component/image/Kiwi-fruits.jpg";
+import Itemimage10 from "./component/image/Lemon-fruits.jpg";
+import Itemimage11 from "./component/image/Mango-Juice.jpg";
+import Itemimage12 from "./component/image/Orange-Juice.jpg";
+import Itemimage13 from "./component/image/Wooden-Pencils.jpg";
+import Itemimage14 from "./component/image/Castell-Pencil.jpg";
+import Itemimage15 from "./component/image/Peri-Peri-Chips.jpg";
+import Itemimage16 from "./component/image/Potato-Chips.jpg";
+
 export const GlobalContext = React.createContext();
 
 export default class StateProvider extends Component {
@@ -58,6 +67,46 @@ export default class StateProvider extends Component {
       imageItem: Itemimage8,
       nameTitle: "Watch 02",
       itemPrice: "$293"
+    },
+    {
+      imageItem: Itemimage9,
+      nameTitle: "Kiwi Fruits",
+      itemPrice: "$47"
+    },
+    {
+      imageItem: Itemimage10,
+      nameTitle: "Lemon Fruits",
+      itemPrice: "$62"
+    },
+    {
+      imageItem: Itemimage11,
+      nameTitle: "Mango Juice",
+      itemPrice: "$63"
+    },
+    {
+      imageItem: Itemimage12,
+      nameTitle: "Orange Juice",
+      itemPrice: "$23"
+    },
+    {
+      imageItem: Itemimage13,
+      nameTitle: "Wooden Pencils",
+      itemPrice: "$17"
+    },
+    {
+      imageItem: Itemimage14,
+      nameTitle: "Castell Pencil",
+      itemPrice: "$27"
+    },
+    {
+      imageItem: Itemimage15,
+      nameTitle: "Peri Peri Chips",
+      itemPrice: "$24"
+    },
+    {
+      imageItem: Itemimage16,
+      nameTitle: "Potato Chips",
+      itemPrice: "$93"
     }
   ];
 
@@ -84,24 +133,32 @@ export default class StateProvider extends Component {
       let shoppingItemsPriceSort;
       let shoppingItemsNameSort;
       let shoppingItemsPrice = this.state.shoppingItems.map(item => {
-        return item.itemPrice;
+        return Number(item.itemPrice.slice(1));
       });
 
       if (e.target.value === "low") {
-        shoppingItemsPriceSort = shoppingItemsPrice.sort();
+        shoppingItemsPriceSort = shoppingItemsPrice.sort(function(a, b) {
+          return a - b;
+        });
         shoppingItemsPriceSort.forEach(sortItem => {
           this.state.shoppingItems.forEach(presentStateItem => {
-            if (presentStateItem.itemPrice === sortItem) {
+            let stateItemPrice = Number(presentStateItem.itemPrice.slice(1));
+            if (stateItemPrice === sortItem) {
               shoppingItems.push(presentStateItem);
             }
           });
         });
         this.setState({ shoppingItems });
       } else if (e.target.value === "high") {
-        shoppingItemsPriceSort = shoppingItemsPrice.sort().reverse();
+        shoppingItemsPriceSort = shoppingItemsPrice
+          .sort(function(a, b) {
+            return a - b;
+          })
+          .reverse();
         shoppingItemsPriceSort.forEach(sortItem => {
           this.state.shoppingItems.forEach(presentStateItem => {
-            if (presentStateItem.itemPrice === sortItem) {
+            let stateItemPrice = Number(presentStateItem.itemPrice.slice(1));
+            if (stateItemPrice === sortItem) {
               shoppingItems.push(presentStateItem);
             }
           });
